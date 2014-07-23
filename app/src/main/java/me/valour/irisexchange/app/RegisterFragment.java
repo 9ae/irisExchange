@@ -1,6 +1,7 @@
 package me.valour.irisexchange.app;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -61,6 +62,10 @@ public class RegisterFragment extends Fragment {
 
     protected void gotToken(String token){
         Log.d("val","token = "+token);
+        SharedPreferences sp = getActivity().getPreferences(Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("token",token);
+        editor.apply();
     }
 
 
