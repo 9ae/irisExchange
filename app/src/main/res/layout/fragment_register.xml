@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="me.valour.irisexchange.app.RegisterFragment">
+
+
+    <EditText android:id="@+id/reg_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_username"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:width="@dimen/textfield_width"
+        android:height="@dimen/textfield_height"/>
+
+    <EditText android:id="@+id/reg_password0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_below="@id/reg_username"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:width="@dimen/textfield_width"
+        android:height="@dimen/textfield_height"
+        android:hint="@string/hint_password"/>
+
+    <EditText android:id="@+id/reg_password1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:width="@dimen/textfield_width"
+        android:height="@dimen/textfield_height"
+        android:hint="@string/hint_confirm_password"
+        android:layout_below="@id/reg_password0"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <EditText android:id="@+id/reg_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:width="@dimen/textfield_width"
+        android:height="@dimen/textfield_height"
+        android:layout_below="@id/reg_password1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:hint="@string/hint_email"/>
+
+    <Button android:id="@+id/reg_go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_register"
+        android:layout_below="@id/reg_email"
+        android:layout_alignRight="@id/reg_email"
+        android:layout_marginTop="20dp" />
+
+
+</RelativeLayout>
