@@ -2,3 +2,10 @@
 /local.properties
 /.idea/workspace.xml
 .DS_Store
+.idea
+gradle.properties
+gradle
+gradlew
+gradlew.bat
+*.iml
+settings.gradle
