@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="@dimen/small_card_width"
+    android:layout_height="@dimen/small_card_height"
+    card_view:cardCornerRadius="8dp">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/smallCardImage"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:minWidth="100dp"
+        android:minHeight="100dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="01"
+        android:id="@+id/smallCardNumber"
+        android:layout_alignLeft="@id/smallCardImage"
+        android:layout_alignTop="@id/smallCardImage"
+        android:layout_marginTop="-8dp"
+        android:layout_marginLeft="-8dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Title"
+        android:id="@+id/smallCardName"
+        android:layout_alignLeft="@id/smallCardImage"
+        android:layout_below="@id/smallCardImage"
+        android:layout_centerHorizontal="true"
+        android:layout_alignStart="@id/smallCardImage"
+        android:layout_alignEnd="@id/smallCardImage"
+        android:gravity="center_horizontal"/>
+
+
+</RelativeLayout>
+</android.support.v7.widget.CardView>

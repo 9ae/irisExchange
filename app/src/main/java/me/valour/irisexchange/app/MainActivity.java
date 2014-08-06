@@ -1,8 +1,6 @@
 package me.valour.irisexchange.app;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -10,8 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.content.SharedPreferences;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
 
     @Override
@@ -19,8 +18,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new RegisterFragment())
+            this.getFragmentManager().beginTransaction()
+                    .add(R.id.container, new DashboardFragment())
                     .commit();
         }
     }
@@ -44,6 +43,18 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setToken(String token){
+        SharedPreferences sp = this.getPreferences(this.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("token",token);
+        editor.apply();
+    }
+
+    public String getToken(){
+       SharedPreferences sp = this.getPreferences(this.MODE_PRIVATE);
+       return sp.getString("token", null);
     }
 
 }
