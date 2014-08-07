@@ -4,16 +4,19 @@ package me.valour.irisexchange.app;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.content.Context;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
-import nouns.UserCard;
 import nouns.UserCard;
 
 /**
@@ -53,23 +56,41 @@ public class DashboardFragment extends Fragment {
 
         grid = (GridView)view.findViewById(R.id.dashboardGrid);
         adapter = new CardGridAdapter(view.getContext());
-        adapter.addUserCard(new UserCard("","","","","red",1));
-        adapter.addUserCard(new UserCard("","","","","blue",2));
         grid.setAdapter(adapter);
-
         return view;
     }
 
-    private void getUserCardsList(){
-        String url = getString(R.string.base_url)+"/cards";
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Ion.getDefault(this.getView().getContext()).configure().setLogging("ion", Log.DEBUG);
+        if(savedInstanceState==null){
+            getUserCardsList("5654313976201216");
+        }
+    }
+
+    public void getUserCardsList(final String deck_id){
+        String url = getString(R.string.base_url)+"/decks/"+deck_id+"/cards";
         String userToken = ((MainActivity)getActivity()).getToken();
         if(userToken!=null){
             url += "?token="+userToken;
         }
-        Ion.with(this).load(url).asJsonArray().setCallback(new FutureCallback<JsonArray>() {
+        Log.d("url",url);
+        Ion.with(this).load(url).asJsonObject().setCallback(new FutureCallback<JsonObject>(){
             @Override
-            public void onCompleted(Exception e, JsonArray jsonElements) {
-                //TODO: do something with array return result;
+            public void onCompleted(Exception e, JsonObject result) {
+
+                if(result==null || !result.has("cards")){
+                    return;
+                }
+                JsonArray cards = result.get("cards").getAsJsonArray();
+                for(int i=0; i<cards.size(); i++){
+                    JsonObject userCard = cards.get(i).getAsJsonObject();
+                     adapter.addUserCard(new UserCard(userCard,deck_id));
+                }
+                if(cards.size()>0){
+                    adapter.notifyDataSetChanged();
+                }
             }
         });
     }

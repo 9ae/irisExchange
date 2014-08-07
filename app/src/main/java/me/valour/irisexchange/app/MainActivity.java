@@ -12,16 +12,14 @@ import android.content.SharedPreferences;
 
 public class MainActivity extends Activity {
 
+    DashboardFragment dashboard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            this.getFragmentManager().beginTransaction()
-                    .add(R.id.container, new DashboardFragment())
-                    .commit();
-        }
+
+        dashboard = (DashboardFragment) this.getFragmentManager().findFragmentById(R.id.dashboardFragment);
     }
 
 
