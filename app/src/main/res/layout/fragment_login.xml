@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="me.valour.irisexchange.app.LoginFragment">
+
+    <EditText android:id="@+id/login_username"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:hint="@string/hint_username"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="40dp"
+              android:width="@dimen/textfield_width"
+              android:height="@dimen/textfield_height"/>
+
+    <EditText android:id="@+id/login_password"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:inputType="textPassword"
+              android:ems="10"
+              android:layout_below="@id/login_username"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="20dp"
+              android:width="@dimen/textfield_width"
+              android:height="@dimen/textfield_height"
+              android:hint="@string/hint_password"/>
+
+    <Button android:id="@+id/login_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_login"
+            android:layout_below="@id/login_password"
+            android:layout_alignRight="@id/login_password"
+            android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/link_to_register"
+        android:id="@+id/to_register_fragment"
+        android:layout_below="@id/login_go"
+        android:layout_alignLeft="@id/login_password"
+        android:layout_alignStart="@id/login_password"
+        android:layout_marginTop="47dp"
+        android:clickable="true"
+        android:linksClickable="false"
+        android:singleLine="true"
+        android:textColor="@android:color/holo_blue_dark"/>
+
+</RelativeLayout>
