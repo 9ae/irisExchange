@@ -14,6 +14,10 @@
     <string name="hint_email">E-mail address</string>
 
     <string name="btn_register">Sign Up</string>
+    <string name="btn_login">Log In</string>
+
+    <string name="link_to_login">Already Registered? Login Here</string>
+    <string name="link_to_register">New User? Sign Up Here</string>
 
     <string name="toast_passwords_dont_match">Passwords must match!</string>
     <string name="toast_not_empty">Enter %s</string>

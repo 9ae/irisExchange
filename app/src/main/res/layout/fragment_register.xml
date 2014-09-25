@@ -59,5 +59,20 @@
         android:layout_alignRight="@id/reg_email"
         android:layout_marginTop="20dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/link_to_login"
+        android:id="@+id/to_login_fragment"
+        android:layout_below="@id/reg_go"
+        android:layout_alignLeft="@id/reg_email"
+        android:layout_alignStart="@id/reg_email"
+        android:layout_marginTop="47dp"
+        android:clickable="true"
+        android:linksClickable="false"
+        android:singleLine="true"
+        android:textColor="@android:color/holo_blue_dark"/>
+
 
 </RelativeLayout>

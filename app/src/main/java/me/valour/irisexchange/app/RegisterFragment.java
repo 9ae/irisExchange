@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
@@ -19,7 +20,7 @@ import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
 
-public class RegisterFragment extends Fragment {
+public class RegisterFragment extends UserFragment {
 
     private RegisterListener regListener;
     private EditText usernameField;
@@ -46,6 +47,14 @@ public class RegisterFragment extends Fragment {
         Button button = (Button) view.findViewById(R.id.reg_go);
         button.setOnClickListener(regListener);
 
+        TextView toggle = (TextView) view.findViewById(R.id.to_login_fragment);
+        toggle.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                toLoginFragment();
+            }
+        });
+
         return view;
     }
 
@@ -60,8 +69,8 @@ public class RegisterFragment extends Fragment {
         super.onDetach();
     }
 
-    protected void gotToken(String token){
-        (  (MainActivity)getActivity() ).setToken(token);
+    private void toLoginFragment(){
+        (  (MainActivity)getActivity() ).toggleLoginRegister(true);
     }
 
 

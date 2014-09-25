@@ -65,7 +65,7 @@ public class DashboardFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Ion.getDefault(this.getView().getContext()).configure().setLogging("ion", Log.DEBUG);
         if(savedInstanceState==null){
-            getUserCardsList("5654313976201216");
+           getUserCardsList("5644406560391168");
         }
     }
 

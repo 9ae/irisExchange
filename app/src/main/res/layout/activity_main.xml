@@ -6,10 +6,4 @@
     tools:context="me.valour.irisexchange.app.MainActivity"
     tools:ignore="MergeRootFrame">
 
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="me.valour.irisexchange.app.DashboardFragment"
-        android:id="@+id/dashboardFragment"
-        android:layout_gravity="left|top"/>
 </FrameLayout>

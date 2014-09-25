@@ -1,6 +1,8 @@
 package me.valour.irisexchange.app;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,14 +14,25 @@ import android.content.SharedPreferences;
 
 public class MainActivity extends Activity {
 
+    FragmentManager fm;
+
     DashboardFragment dashboard;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        fm = this.getFragmentManager();
 
-        dashboard = (DashboardFragment) this.getFragmentManager().findFragmentById(R.id.dashboardFragment);
+        if(getToken()==null){
+            toggleLoginRegister(false);
+        } else {
+           showDashboard();
+        }
+
+      //  dashboard = (DashboardFragment) this.getFragmentManager().findFragmentById(R.id.dashboardFragment);
+      //  registerFragment = (RegisterFragment) fm.findFragmentById(R.id.mainFragment);
     }
 
 
@@ -37,12 +50,37 @@ public class MainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+       /* if (id == R.id.action_settings) {
             return true;
-        }
+        } */
         return super.onOptionsItemSelected(item);
     }
 
+    public void toggleLoginRegister(boolean registerActive){
+        if(registerActive){
+            LoginFragment loginFragment = new LoginFragment();
+            FragmentTransaction transaction = fm.beginTransaction();
+            transaction.replace(R.id.container, loginFragment);
+            transaction.commit();
+        } else {
+          RegisterFragment registerFragment = new RegisterFragment();
+          FragmentTransaction transaction = fm.beginTransaction();
+          transaction.replace(R.id.container, registerFragment);
+          transaction.commit();
+        }
+    }
+
+    public void showDashboard(){
+        dashboard = new DashboardFragment();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.container, dashboard);
+        transaction.commit();
+    }
+
+    /**
+     * Set user token
+     * @param token
+     */
     public void setToken(String token){
         SharedPreferences sp = this.getPreferences(this.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
@@ -50,6 +88,10 @@ public class MainActivity extends Activity {
         editor.apply();
     }
 
+    /**
+     * Get user token
+     * @return
+     */
     public String getToken(){
        SharedPreferences sp = this.getPreferences(this.MODE_PRIVATE);
        return sp.getString("token", null);

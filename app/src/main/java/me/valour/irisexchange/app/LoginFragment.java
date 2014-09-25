@@ -102,6 +102,7 @@ public class LoginFragment extends UserFragment {
                             }
                             String token = jsonObject.get("token").getAsString();
                             gotToken(token);
+
                         }
                    });
         }

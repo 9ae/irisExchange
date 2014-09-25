@@ -31,10 +31,10 @@ public class UserCard {
     }
 
     public String imageURL(){
-        return String.format("/user_cards?card_id=%s&deck_id=%s&uc=%s", card_id, deck_id, id);
+        return String.format("/decks/%s/cards/%s?id=%s", deck_id, card_id,id);
     }
 
     public String imageURL(int size){
-        return String.format("/user_cards?card_id=%s&deck_id=%s&uc=%s&size=%d", card_id, deck_id, id, size);
+        return String.format("/decks/%s/cards/%s?id=%s&size=%d",deck_id, card_id, id, size);
     }
 }

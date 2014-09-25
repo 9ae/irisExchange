@@ -13,5 +13,7 @@ public class UserFragment extends Fragment {
 
     protected void gotToken(String token){
         (  (MainActivity)getActivity() ).setToken(token);
+        (  (MainActivity)getActivity() ).showDashboard();
     }
+
 }
