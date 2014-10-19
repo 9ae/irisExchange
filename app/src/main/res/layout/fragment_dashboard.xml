@@ -1,28 +1,44 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="me.valour.irisexchange.app.DashboardFragment"
-    android:orientation="vertical">
+    android:columnCount="3"
+    android:rowCount="10">
 
     <GridView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_weight="8"
         android:id="@+id/dashboardGrid"
-        android:layout_gravity="left|top"
         android:columnWidth="@dimen/small_card_width"
         android:numColumns="auto_fit"
         android:verticalSpacing="5dp"
         android:horizontalSpacing="5dp"
         android:stretchMode="columnWidth"
-        android:gravity="center" />
+        android:gravity="center"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_row="0"
+        android:layout_rowSpan="9"
+        android:layout_gravity="fill"/>
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2">
-        <Button android:id="@+id/btn_settings" />
-        </GridLayout>
+        <Button android:id="@+id/btn_settings"
+            android:layout_row="9"
+            android:layout_column="0"
+            android:layout_gravity="fill_horizontal"
+            android:text="@string/btn_settings"/>
 
-</LinearLayout>
+        <Button android:id="@+id/btn_capture"
+            android:layout_row="9"
+            android:layout_column="1"
+            android:layout_gravity="fill_horizontal"
+            android:text="@string/btn_capture"/>
+
+    <Button android:id="@+id/btn_inbox"
+        android:layout_row="9"
+        android:layout_column="2"
+        android:layout_gravity="fill_horizontal"
+        android:text="@string/btn_inbox"/>
+
+
+
+</GridLayout>
