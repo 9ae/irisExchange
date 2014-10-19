@@ -1,12 +1,13 @@
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="me.valour.irisexchange.app.DashboardFragment"
-    android:columnCount="3"
-    android:rowCount="10">
+    android:orientation="vertical">
 
     <GridView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
         android:layout_weight="8"
         android:id="@+id/dashboardGrid"
         android:columnWidth="@dimen/small_card_width"
@@ -15,30 +16,36 @@
         android:horizontalSpacing="5dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
-        android:layout_column="0"
-        android:layout_columnSpan="3"
-        android:layout_row="0"
-        android:layout_rowSpan="9"
-        android:layout_gravity="fill"/>
+        android:layout_gravity="top|left"
+      />
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
 
         <Button android:id="@+id/btn_settings"
-            android:layout_row="9"
-            android:layout_column="0"
             android:layout_gravity="fill_horizontal"
-            android:text="@string/btn_settings"/>
+            android:text="@string/btn_settings"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            />
 
         <Button android:id="@+id/btn_capture"
-            android:layout_row="9"
-            android:layout_column="1"
             android:layout_gravity="fill_horizontal"
-            android:text="@string/btn_capture"/>
+            android:text="@string/btn_capture"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"/>
 
     <Button android:id="@+id/btn_inbox"
-        android:layout_row="9"
-        android:layout_column="2"
         android:layout_gravity="fill_horizontal"
-        android:text="@string/btn_inbox"/>
+        android:text="@string/btn_inbox"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"/>
 
+    </LinearLayout>
 
-
-</GridLayout>
+</LinearLayout>
