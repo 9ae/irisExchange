@@ -1,6 +1,8 @@
-package me.valour.irisexchange.app;
+package me.valour.irisexchange.app.fragments;
 
 import android.app.Fragment;
+
+import me.valour.irisexchange.app.activities.MainActivity;
 
 /**
  * Created by alice on 9/16/14.

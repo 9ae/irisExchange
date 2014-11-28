@@ -1,18 +1,20 @@
-package me.valour.irisexchange.app;
+package me.valour.irisexchange.app.activities;
 
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 import android.content.SharedPreferences;
 
-public class MainActivity extends Activity {
+import me.valour.irisexchange.app.R;
+import me.valour.irisexchange.app.fragments.CaptureFragment;
+import me.valour.irisexchange.app.fragments.RegisterFragment;
+import me.valour.irisexchange.app.fragments.DashboardFragment;
+import me.valour.irisexchange.app.fragments.LoginFragment;
+
+public class MainActivity extends Activity implements DashboardFragment.DashboardEventListener {
 
     FragmentManager fm;
 
@@ -75,6 +77,25 @@ public class MainActivity extends Activity {
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.container, dashboard);
         transaction.commit();
+    }
+
+    @Override
+    public void launchCapture(){
+        CaptureFragment captureFragment = CaptureFragment.newInstance();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.container, captureFragment);
+        transaction.addToBackStack("dashboard");
+        transaction.commit();
+    }
+
+    @Override
+    public void launchSettings() {
+
+    }
+
+    @Override
+    public void launchInbox() {
+
     }
 
     /**

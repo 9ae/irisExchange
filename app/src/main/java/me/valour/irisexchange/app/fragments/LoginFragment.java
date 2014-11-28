@@ -1,10 +1,9 @@
-package me.valour.irisexchange.app;
+package me.valour.irisexchange.app.fragments;
 
 
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,8 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
-import org.w3c.dom.Text;
+import me.valour.irisexchange.app.activities.MainActivity;
+import me.valour.irisexchange.app.R;
 
 
 public class LoginFragment extends UserFragment {

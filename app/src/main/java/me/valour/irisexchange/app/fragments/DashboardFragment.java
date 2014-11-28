@@ -1,22 +1,24 @@
-package me.valour.irisexchange.app;
+package me.valour.irisexchange.app.fragments;
 
 
-
+import android.app.Activity;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridView;
-import android.content.Context;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
+import me.valour.irisexchange.app.activities.MainActivity;
+import me.valour.irisexchange.app.R;
+import me.valour.irisexchange.app.adapters.CardGridAdapter;
 import nouns.UserCard;
 
 /**
@@ -29,6 +31,7 @@ public class DashboardFragment extends Fragment {
 
     GridView grid;
     CardGridAdapter adapter;
+    DashboardEventListener listener;
 
     // TODO: Rename and change types and number of parameters
     public static DashboardFragment newInstance() {
@@ -57,6 +60,15 @@ public class DashboardFragment extends Fragment {
         grid = (GridView)view.findViewById(R.id.dashboardGrid);
         adapter = new CardGridAdapter(view.getContext());
         grid.setAdapter(adapter);
+
+        final Button launchCapture = (Button) view.findViewById(R.id.btn_capture);
+        launchCapture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.launchCapture();
+            }
+        });
+
         return view;
     }
 
@@ -67,6 +79,22 @@ public class DashboardFragment extends Fragment {
         if(savedInstanceState==null){
            getUserCardsList("5644406560391168");
         }
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            listener = (DashboardEventListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement OnArticleSelectedListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
     }
 
     public void getUserCardsList(final String deck_id){
@@ -95,5 +123,12 @@ public class DashboardFragment extends Fragment {
         });
     }
 
+    public interface DashboardEventListener{
+        public void launchCapture();
+
+        public void launchSettings();
+
+        public void launchInbox();
+    }
 
 }

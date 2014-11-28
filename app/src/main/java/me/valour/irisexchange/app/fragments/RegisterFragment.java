@@ -1,10 +1,7 @@
-package me.valour.irisexchange.app;
+package me.valour.irisexchange.app.fragments;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -18,6 +15,9 @@ import android.widget.Toast;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+
+import me.valour.irisexchange.app.R;
+import me.valour.irisexchange.app.activities.MainActivity;
 
 
 public class RegisterFragment extends UserFragment {

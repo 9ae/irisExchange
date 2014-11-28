@@ -1,4 +1,4 @@
-package me.valour.irisexchange.app;
+package me.valour.irisexchange.app.adapters;
 
 import java.util.ArrayList;
 
@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 
 import com.koushikdutta.ion.Ion;
 
+import me.valour.irisexchange.app.R;
 import nouns.UserCard;
 
 /**
