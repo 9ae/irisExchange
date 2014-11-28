@@ -5,10 +5,17 @@
     tools:context="me.valour.irisexchange.app.fragments.CaptureFragment">
 
 
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Take Picture"
         android:id="@+id/btn_launch_camera"
         android:layout_gravity="center_horizontal|bottom"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_captured_preview"
+        android:layout_gravity="center"/>
 </FrameLayout>

@@ -14,7 +14,7 @@ import me.valour.irisexchange.app.fragments.RegisterFragment;
 import me.valour.irisexchange.app.fragments.DashboardFragment;
 import me.valour.irisexchange.app.fragments.LoginFragment;
 
-public class MainActivity extends Activity implements DashboardFragment.DashboardEventListener {
+public class MainActivity extends CameraActivity implements DashboardFragment.DashboardEventListener {
 
     FragmentManager fm;
 
