@@ -3,6 +3,7 @@ package me.valour.irisexchange.app.activities;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +15,7 @@ import me.valour.irisexchange.app.fragments.RegisterFragment;
 import me.valour.irisexchange.app.fragments.DashboardFragment;
 import me.valour.irisexchange.app.fragments.LoginFragment;
 
-public class MainActivity extends CameraActivity implements DashboardFragment.DashboardEventListener {
+public class MainActivity extends Activity implements DashboardFragment.DashboardEventListener {
 
     FragmentManager fm;
 
@@ -81,11 +82,8 @@ public class MainActivity extends CameraActivity implements DashboardFragment.Da
 
     @Override
     public void launchCapture(){
-        CaptureFragment captureFragment = CaptureFragment.newInstance();
-        FragmentTransaction transaction = fm.beginTransaction();
-        transaction.replace(R.id.container, captureFragment);
-        transaction.addToBackStack("dashboard");
-        transaction.commit();
+        Intent intent = new Intent(this, CameraActivity.class);
+        startActivity(intent);
     }
 
     @Override

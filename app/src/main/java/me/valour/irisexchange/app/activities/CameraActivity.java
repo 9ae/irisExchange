@@ -23,8 +23,13 @@
 package me.valour.irisexchange.app.activities;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
+
+import me.valour.irisexchange.app.R;
+import me.valour.irisexchange.app.fragments.CaptureFragment;
 
 /**
  * This activity assists in trapping the camera's "State" e.g. where the camera plans
@@ -46,6 +51,21 @@ public class CameraActivity extends Activity {
     // Required for camera operations in order to save the image file on resume.
     private String mCurrentPhotoPath = null;
     private Uri mCapturedImageURI = null;
+
+    FragmentManager fm;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        if (savedInstanceState == null) {
+            fm = this.getFragmentManager();
+            FragmentTransaction transaction = fm.beginTransaction();
+            CaptureFragment captureFragment = CaptureFragment.newInstance();
+            transaction.replace(R.id.container, captureFragment);
+            transaction.commit();
+        }
+    }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
