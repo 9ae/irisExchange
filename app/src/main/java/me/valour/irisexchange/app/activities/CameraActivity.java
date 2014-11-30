@@ -25,6 +25,7 @@ package me.valour.irisexchange.app.activities;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -101,6 +102,12 @@ public class CameraActivity extends Activity {
         this.mCurrentPhotoPath = mCurrentPhotoPath;
     }
 
+    public void saveCurrentPhotoPath(){
+        Intent intent = getIntent();
+        intent.putExtra("image_path", this.mCurrentPhotoPath);
+        setResult(RESULT_OK, intent);
+    }
+
     public Uri getCapturedImageURI() {
         return mCapturedImageURI;
     }
@@ -108,4 +115,6 @@ public class CameraActivity extends Activity {
     public void setCapturedImageURI(Uri mCapturedImageURI) {
         this.mCapturedImageURI = mCapturedImageURI;
     }
+
+
 }

@@ -146,7 +146,9 @@ public class CaptureFragment extends Fragment {
             CameraActivity activity = (CameraActivity)getActivity();
 
             // Show the full sized image.
-            setFullImageFromFilePath(activity.getCurrentPhotoPath(), previewImage);
+           // setFullImageFromFilePath(activity.getCurrentPhotoPath(), previewImage);
+            activity.saveCurrentPhotoPath();
+            activity.finish();
         } else {
             Toast.makeText(getActivity(), "Image Capture Failed", Toast.LENGTH_SHORT)
                     .show();

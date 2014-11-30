@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.SharedPreferences;
+import android.widget.Toast;
+
+import java.util.logging.Logger;
 
 import me.valour.irisexchange.app.R;
 import me.valour.irisexchange.app.fragments.CaptureFragment;
@@ -18,9 +21,9 @@ import me.valour.irisexchange.app.fragments.LoginFragment;
 public class MainActivity extends Activity implements DashboardFragment.DashboardEventListener {
 
     FragmentManager fm;
-
     DashboardFragment dashboard;
 
+    static final int CAMERA_ACTIVITY = 1001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +86,7 @@ public class MainActivity extends Activity implements DashboardFragment.Dashboar
     @Override
     public void launchCapture(){
         Intent intent = new Intent(this, CameraActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, CAMERA_ACTIVITY);
     }
 
     @Override
@@ -114,6 +117,22 @@ public class MainActivity extends Activity implements DashboardFragment.Dashboar
     public String getToken(){
        SharedPreferences sp = this.getPreferences(this.MODE_PRIVATE);
        return sp.getString("token", null);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode!=RESULT_OK){
+            return;
+        }
+        switch (requestCode){
+            case CAMERA_ACTIVITY:
+                if(data.getExtras().containsKey("image_path")) {
+                    String image_path = data.getStringExtra("image_path");
+                    Toast.makeText(this, image_path, Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
     }
 
 }
